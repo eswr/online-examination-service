@@ -12,7 +12,9 @@ docker-compose up
 1. Add a new multiple choice question
 
     ```sh
-    curl -X POST http://localhost:3000/api/question   -H "Content-Type: application/json"   -d '{
+    curl -X POST http://localhost:3000/api/question \
+    -H "Content-Type: application/json" \
+    -d '{
             "type": "MCQ",
             "questionText": "What is Docker?",
             "options": ["A tool for virtualization", "A container management tool", "A database"],
@@ -36,16 +38,14 @@ docker-compose up
 
     ```sh
     curl -X POST http://localhost:3000/api/question \
-    -H "Content-Type: application/json" \
-    -d '{
-            "type": "DESCRIPTIVE",
-            "questionText": "Describe the water cycle.",
-            "answer": "The water cycle describes the continuous movement of water on, above, and below the surface of the Earth.",
-            "image": "https://example.com/path/to/image.png"
-        }'
+    -H "Content-Type: multipart/form-data" \
+    -F "type=DESCRIPTIVE" \
+    -F "questionText=Describe the water cycle." \
+    -F "answer=The water cycle describes the continuous movement of water on, above, and below the surface of the Earth." \
+    -F 'image=@"/home/eswr/Pictures/Screenshots/Screenshot from 2024-09-04 14-38-54.png"'
     ```
 
-1. Get 10 questions for the exam
+4. Get 10 questions for the exam
 
     ```sh
     curl -X GET http://localhost:3000/api/exam

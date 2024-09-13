@@ -12,7 +12,7 @@ services:
       DB_NAME: exam_db
     depends_on:
       - db
-    command: ["./wait-for-it.sh", "db:3306", "--timeout=20", "--", "npm", "run", "dev"]
+    command: ["./wait-for-it.sh", "db:3306", "--timeout=60", "--", "npm", "run", "dev"]
     volumes:
       - ./wait-for-it.sh:/wait-for-it.sh
 
